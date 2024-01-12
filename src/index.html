@@ -1,33 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/public/styles.css">
     <title>TripSplit</title>
 </head>
+
 <body>
     <!-- Global Container -->
-    <div class="min-h-full border border-black">
-        <!-- Content Container -->
+    <div class="min-h-screen border border-red-500 flex flex-col">
+        <!-- Title Container -->
+        <div class="flex justify-center shadow-md">
+            <h1 class="border border-black m-5 p-2">TripSplit</h1>
+        </div>
+        <!-- Content -->
         <div>
-            <!-- Title Container -->
-            <div></div>
-            <!-- Content -->
+            <!-- Add Button Container -->
+            <div class="mt-10 flex justify-center">
+                <!-- Add Button -->
+                <button class="px-14 py-3 bg-slate-300 rounded-xl hover:bg-slate-400
+                 hover:border-slate-100 hover:text-white focus:ring-2 focus:text-slate-600 focus:ring-red-100 font-medium text-xl" id="add-button">ADD</button>
+            </div>
+            <!-- Output Container -->
             <div>
-                <!-- Add Button Container -->
-                <div>
-                    <!-- Add Button -->
-                    <button></button>
-                </div>
-                <!-- Output Container -->
-                <div>
-                    <!-- Output Layout-->
-                    <div></div>
-                </div>
+                <!-- Output Layout-->
+                <div></div>
             </div>
         </div>
     </div>
     <script src="/src/script.js"></script>
 </body>
+
 </html>
