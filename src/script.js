@@ -96,8 +96,11 @@ function outputLayout(name, money) {
 //Calculate function
 function getTotal(arr) {
     let total = 0;
-    arr.forEach((entity) => {
+    let totalNumPpl = 1;
+    arr.forEach((entity, index) => {
         total += parseFloat(entity.money);
+        totalNumPpl += parseInt(index);
     })
     console.log(total);
+    console.log(totalNumPpl);
 }
