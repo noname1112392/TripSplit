@@ -10,23 +10,34 @@
 
 <body>
     <!-- Global Container -->
-    <div class="min-h-screen border border-red-500 flex flex-col">
+    <div class="min-h-screen border border-red-500 flex flex-col bg-amber-50">
         <!-- Title Container -->
-        <div class="flex justify-center shadow-md">
+        <div class="flex justify-center shadow-md bg-white mx-5">
             <h1 class="border border-black m-5 p-2">TripSplit</h1>
         </div>
         <!-- Content -->
-        <div>
+        <div class="m-5 bg-white shadow-xl rounded-md">
             <!-- Add Button Container -->
-            <div class="mt-10 flex justify-center">
+            <div class="m-10 flex justify-center">
                 <!-- Add Button -->
-                <button class="px-14 py-3 bg-slate-300 rounded-xl hover:bg-slate-400
+                <button class="px-14 py-3 bg-amber-300 rounded-xl hover:bg-amber-500
                  hover:border-slate-100 hover:text-white focus:ring-2 focus:text-slate-600 focus:ring-red-100 font-medium text-xl" id="add-button">ADD</button>
             </div>
             <!-- Output Container -->
-            <div>
+            <div class="m-10 rounded-lg p-5 border border-gray-200">
                 <!-- Output Layout-->
-                <div></div>
+                <div class="flex justify-between items-center px-5 rounded-lg shadow-md p-2">
+                    <!-- Name container -->
+                    <div>
+                        <p>Name</p>
+                    </div>
+                    <div>|</div>
+                    <!-- Money -->
+                    <div class="flex space-x-2">
+                        <p>Pay/Owe:</p>
+                        <p>$69.69</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
