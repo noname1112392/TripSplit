@@ -9,6 +9,13 @@
 </head>
 
 <body>
+    <!-- Dialog -->
+    <dialog id="dialog" class="bg-white">
+        <div>
+            <h1>Add Form</h1>
+            <form></form>
+        </div>
+    </dialog>
     <!-- Global Container -->
     <div class="min-h-screen border border-red-500 flex flex-col bg-amber-50">
         <!-- Title Container -->
@@ -20,7 +27,7 @@
             <!-- Add Button Container -->
             <div class="m-10 flex justify-center">
                 <!-- Add Button -->
-                <button class="px-14 py-3 bg-amber-300 rounded-xl hover:bg-amber-500
+                <button id="add-btn-dialog" class="px-14 py-3 bg-amber-300 rounded-xl hover:bg-amber-500
                  hover:border-slate-100 hover:text-white focus:ring-2 focus:text-slate-600 focus:ring-red-100 font-medium text-xl" id="add-button">ADD</button>
             </div>
             <!-- Output Container -->
@@ -31,7 +38,8 @@
                     <div>
                         <p>Name</p>
                     </div>
-                    <div>|</div>
+                    <!-- Divider -->
+                    <div class="font-bold text-2xl">|</div>
                     <!-- Money -->
                     <div class="flex space-x-2">
                         <p>Pay/Owe:</p>
