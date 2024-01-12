@@ -37,11 +37,14 @@ function outputLayout() {
     const nameContainer = document.createElement('div');
     //p tag inside name container
     const pName = document.createElement('p');
+    pName.innerHTML = 'Ton';
     //name container append p tag
     nameContainer.appendChild(pName);
+    
 
     //create a divider between name and the money they spend/owe
     const divider = document.createElement('div');
+    divider.innerHTML = '|';
     divider.className = 'font-bold text-2xl';
 
     //Money container
@@ -51,8 +54,18 @@ function outputLayout() {
     //this p tag of pay or owe will change later
     //will create an if else statement to determine
     const pPayOwe = document.createElement('p');
+    pPayOwe.innerHTML = 'Pay/Owe:'
     const moneyDisplay = document.createElement('p');
+    moneyDisplay.innerHTML = '$69.69'
     //money container append 2 p tags
     moneyContainer.appendChild(pPayOwe);
     moneyContainer.appendChild(moneyDisplay);
+
+    //outputContainer will append box to make it show up on the website
+    box.appendChild(nameContainer);
+    box.appendChild(divider);
+    box.appendChild(moneyContainer);
+    outputContainer.appendChild(box);
 }
+outputLayout();
+outputLayout();
