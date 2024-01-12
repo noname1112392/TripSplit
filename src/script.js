@@ -1,10 +1,10 @@
 // Global Variables
 const addBtnDialog = document.getElementById('add-btn-dialog');
 const dialog = document.getElementById('dialog');
-const nameInput = document.getElementById('name-input');
-const moneyInput = document.getElementsByName('money-input');
 const submitBtn = document.getElementById('submit-btn');
 const closeBtn = document.getElementById('close-btn');
+const nameInput = document.getElementById('name-input');
+const moneyInput = document.getElementById('money-input');
 const outputContainer = document.getElementById('output-container');
 
 //An array to store entity's objects
@@ -21,6 +21,30 @@ addBtnDialog.addEventListener('click', () => {
     dialog.showModal();
 })
 
+//Submit btn function
+submitBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    let nameValue = nameInput.value;
+    let moneyValue = moneyInput.value;
+    createEntity(nameValue, moneyValue);
+    dialog.close();
+})
+
+//Function to create individual entity
+function createEntity(name, money) {
+    const newEntity = new Entity(name, money);
+    entityStorage.push(newEntity);
+    displayOutput();
+}
+
+//Function to display the output layout
+function displayOutput() {
+    outputContainer.innerHTML = '';
+    entityStorage.forEach((entity) => {
+        outputLayout(entity.name, entity.money);
+    });
+}
+
 //Function to close dialog
 closeBtn.addEventListener('click', (e) => {
     e.preventDefault();
@@ -28,7 +52,7 @@ closeBtn.addEventListener('click', (e) => {
 })
 
 //Output the layout structure
-function outputLayout() {
+function outputLayout(name, money) {
     //Box container the output
     const box = document.createElement('div');
     box.className = 'flex justify-between items-center px-5 rounded-lg shadow-md p-2';
@@ -37,10 +61,10 @@ function outputLayout() {
     const nameContainer = document.createElement('div');
     //p tag inside name container
     const pName = document.createElement('p');
-    pName.innerHTML = 'Ton';
+    pName.innerHTML = name;
     //name container append p tag
     nameContainer.appendChild(pName);
-    
+
 
     //create a divider between name and the money they spend/owe
     const divider = document.createElement('div');
@@ -56,7 +80,7 @@ function outputLayout() {
     const pPayOwe = document.createElement('p');
     pPayOwe.innerHTML = 'Pay/Owe:'
     const moneyDisplay = document.createElement('p');
-    moneyDisplay.innerHTML = '$69.69'
+    moneyDisplay.innerHTML = `$${money}`;
     //money container append 2 p tags
     moneyContainer.appendChild(pPayOwe);
     moneyContainer.appendChild(moneyDisplay);
@@ -67,5 +91,3 @@ function outputLayout() {
     box.appendChild(moneyContainer);
     outputContainer.appendChild(box);
 }
-outputLayout();
-outputLayout();
