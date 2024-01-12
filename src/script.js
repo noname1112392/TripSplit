@@ -35,6 +35,7 @@ function createEntity(name, money) {
     const newEntity = new Entity(name, money);
     entityStorage.push(newEntity);
     displayOutput();
+    getTotal(entityStorage);
 }
 
 //Function to display the output layout
@@ -90,4 +91,13 @@ function outputLayout(name, money) {
     box.appendChild(divider);
     box.appendChild(moneyContainer);
     outputContainer.appendChild(box);
+}
+
+//Calculate function
+function getTotal(arr) {
+    let total = 0;
+    arr.forEach((entity) => {
+        total += parseFloat(entity.money);
+    })
+    console.log(total);
 }
