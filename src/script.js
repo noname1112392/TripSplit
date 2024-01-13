@@ -10,6 +10,9 @@ const outputContainer = document.getElementById('output-container');
 //An array to store entity's objects
 const entityStorage = [];
 
+//An array to store the money who need to pay or need to receive
+const newEntityStorage = [];
+
 //Constructor of the entity
 function Entity(name, money) {
     this.name = name;
@@ -107,5 +110,6 @@ function getTotal(arr) {
 
 function totalPerIndividual(total, totalNumPpl) {
     let totalPerPerson = total / totalNumPpl;
-    console.log(totalPerPerson)
+    console.log(totalPerPerson);
+    
 }
