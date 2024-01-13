@@ -96,11 +96,16 @@ function outputLayout(name, money) {
 //Calculate function
 function getTotal(arr) {
     let total = 0;
-    let totalNumPpl = 1;
-    arr.forEach((entity, index) => {
+    let totalNumPpl = entityStorage.length;
+    arr.forEach((entity) => {
         total += parseFloat(entity.money);
-        totalNumPpl += parseInt(index);
     })
     console.log(total);
     console.log(totalNumPpl);
+    totalPerIndividual(total, totalNumPpl);
+}
+
+function totalPerIndividual(total, totalNumPpl) {
+    let totalPerPerson = total / totalNumPpl;
+    console.log(totalPerPerson)
 }
