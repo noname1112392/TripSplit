@@ -109,15 +109,19 @@ function outputLayout(name, money) {
 function getTotal(arr) {
     let total = 0;
     let totalNumPpl = entityStorage.length;
+    let name = '';
     arr.forEach((entity) => {
         total += parseFloat(entity.money);
+        name = entity.name;
     });
+
     showTotal(total);
+    createNewEntity(name);
     totalPerIndividual = total / totalNumPpl;
-    console.log(totalPerIndividual);
+    console.log(newEntityStorage);
 }
 
-function createNewEntity() {
+function createNewEntity(name) {
     const newEntity = new Entity(name);
     newEntityStorage.push(newEntity);
 }
