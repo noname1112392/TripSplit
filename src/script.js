@@ -7,6 +7,7 @@ const nameInput = document.getElementById('name-input');
 const moneyInput = document.getElementById('money-input');
 const outputContainer = document.getElementById('output-container');
 const totalDisplay = document.getElementsByName('total-display');
+const submitBtn = document.getElementById('submit-btn');
 
 //An array to store entity's objects
 const entityStorage = [];
