@@ -1,7 +1,7 @@
 // Global Variables
 const addBtnDialog = document.getElementById('add-btn-dialog');
 const dialog = document.getElementById('dialog');
-const submitBtn = document.getElementById('submit-btn');
+const addBtn = document.getElementById('add-btn');
 const closeBtn = document.getElementById('close-btn');
 const nameInput = document.getElementById('name-input');
 const moneyInput = document.getElementById('money-input');
@@ -24,8 +24,8 @@ addBtnDialog.addEventListener('click', () => {
     dialog.showModal();
 })
 
-//Submit btn function
-submitBtn.addEventListener('click', (e) => {
+//Add btn function
+addBtn.addEventListener('click', (e) => {
     e.preventDefault();
     let nameValue = nameInput.value;
     let moneyValue = moneyInput.value;
@@ -103,13 +103,21 @@ function getTotal(arr) {
     arr.forEach((entity) => {
         total += parseFloat(entity.money);
     })
-    console.log(total);
-    console.log(totalNumPpl);
-    totalPerIndividual(total, totalNumPpl);
+    let totalPerIndividual = total / totalNumPpl;
+    console.log(totalPerIndividual);
 }
 
-function totalPerIndividual(total, totalNumPpl) {
-    let totalPerPerson = total / totalNumPpl;
-    console.log(totalPerPerson);
-    
-}
+// function totalPerIndividual(total, totalNumPpl) {
+//     let totalPerPerson = total / totalNumPpl;
+//     return totalPerPerson;
+// }
+
+// function 
+// 2220 / 3
+// 749 ea
+// entityStorage.forEach((entity) => {
+//     name = entity.name;
+// })
+// const newEntity = new Entity(name, totalPerPerson);
+// newEntityStorage.push(newEntity);
+// console.log(newEntityStorage);
