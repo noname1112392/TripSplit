@@ -16,6 +16,10 @@ const entityStorage = [];
 //An array to store the money who need to pay or need to receive
 const newEntityStorage = [];
 
+//An array to store the update version when the entitystorage.money - the newEntityStorage.money
+//this array will then display the money onto the website
+const updateEntityStorage = [];
+
 //Constructor of the entity
 function Entity(name, money) {
     this.name = name;
@@ -118,7 +122,6 @@ function getTotal(arr) {
     showTotal(total);
     createNewEntity(name);
     totalPerIndividual = total / totalNumPpl;
-    console.log(newEntityStorage);
 }
 
 function createNewEntity(name) {
@@ -130,7 +133,7 @@ function showTotal(total) {
     totalDisplay.innerHTML = `$${total}`;
 }
 
-function updateEntity(moneyPerIndividual) {
+function newEntity(moneyPerIndividual) {
     newEntityStorage.forEach((entity) => {
         entity.money = moneyPerIndividual;
     })
@@ -138,9 +141,17 @@ function updateEntity(moneyPerIndividual) {
 }
 
 submitBtn.addEventListener('click', () => {
-    updateEntity(totalPerIndividual);
+    newEntity(totalPerIndividual);
+    calculate();
+    console.log(entityStorage);
 })
-//submit addeventlisner >>>
-//call 3 functions inside
-//first function will update the name and current totalPerindividual value
-//display the result on the website
+
+function calculate() {
+    updateEntityStorage.length = 0;
+    entityStorage.forEach((entity) => {
+        const newTotal = parseFloat(entity.money) - parseFloat(totalPerIndividual);
+        const newEntity = new Entity(entity.name, newTotal);
+        updateEntityStorage.push(newEntity);
+    })
+    console.log(updateEntityStorage);
+}
