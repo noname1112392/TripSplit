@@ -31,8 +31,14 @@ addBtn.addEventListener('click', (e) => {
     e.preventDefault();
     let nameValue = nameInput.value;
     let moneyValue = moneyInput.value;
-    createEntity(nameValue, moneyValue);
-    dialog.close();
+    //check if money input is a valid number
+    if (!isNaN(moneyValue) && moneyValue.trim() !== '') {
+        createEntity(nameValue, moneyValue);
+        dialog.close();
+    } else {
+        //alert for now but will create a div under the money input
+        alert('please enter a valid amount for money.')
+    }
 })
 
 //Function to create individual entity
