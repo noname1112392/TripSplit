@@ -6,6 +6,7 @@ const closeBtn = document.getElementById('close-btn');
 const nameInput = document.getElementById('name-input');
 const moneyInput = document.getElementById('money-input');
 const outputContainer = document.getElementById('output-container');
+const totalDisplay = document.getElementsByName('total-display');
 
 //An array to store entity's objects
 const entityStorage = [];
@@ -82,7 +83,7 @@ function outputLayout(name, money) {
     //this p tag of pay or owe will change later
     //will create an if else statement to determine
     const pPayOwe = document.createElement('p');
-    pPayOwe.innerHTML = 'Pay/Owe:'
+    pPayOwe.innerHTML = 'Paid:'
     const moneyDisplay = document.createElement('p');
     moneyDisplay.innerHTML = `$${money}`;
     //money container append 2 p tags
