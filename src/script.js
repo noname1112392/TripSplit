@@ -8,6 +8,7 @@ const moneyInput = document.getElementById('money-input');
 const outputContainer = document.getElementById('output-container');
 const totalDisplay = document.getElementById('total-display');
 const submitBtn = document.getElementById('submit-btn');
+let totalPerIndividual = 0;
 
 //An array to store entity's objects
 const entityStorage = [];
@@ -108,30 +109,33 @@ function outputLayout(name, money) {
 function getTotal(arr) {
     let total = 0;
     let totalNumPpl = entityStorage.length;
+    let name = '';
     arr.forEach((entity) => {
         total += parseFloat(entity.money);
+        newName = entity.name;
     });
     showTotal(total);
-    console.log(total);
-    let totalPerIndividual = total / totalNumPpl;
-    console.log(totalPerIndividual);
+    totalPerIndividual = total / totalNumPpl;
+    createNewEntity(name);
+}
+
+function createNewEntity(name) {
+    const newEntity = new Entity(name);
+    newEntityStorage.push(newEntity);
 }
 
 function showTotal(total) {
     totalDisplay.innerHTML = `$${total}`;
 }
 
-// function totalPerIndividual(total, totalNumPpl) {
-//     let totalPerPerson = total / totalNumPpl;
-//     return totalPerPerson;
-// }
+function updateEntity(moneyPerIndividual) {
+    newEntityStorage.forEach((entity) => {
+        entity.money = moneyPerIndividual;
+    })
+    console.log(newEntityStorage);
+}
 
-// function 
-// 2220 / 3
-// 749 ea
-// entityStorage.forEach((entity) => {
-//     name = entity.name;
-// })
-// const newEntity = new Entity(name, totalPerPerson);
-// newEntityStorage.push(newEntity);
-// console.log(newEntityStorage);
+//submit addeventlisner >>>
+//call 3 functions inside
+//first function will update the name and current totalPerindividual value
+//display the result on the website
