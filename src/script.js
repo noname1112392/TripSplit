@@ -6,7 +6,7 @@ const closeBtn = document.getElementById('close-btn');
 const nameInput = document.getElementById('name-input');
 const moneyInput = document.getElementById('money-input');
 const outputContainer = document.getElementById('output-container');
-const totalDisplay = document.getElementsByName('total-display');
+const totalDisplay = document.getElementById('total-display');
 const submitBtn = document.getElementById('submit-btn');
 
 //An array to store entity's objects
@@ -104,9 +104,15 @@ function getTotal(arr) {
     let totalNumPpl = entityStorage.length;
     arr.forEach((entity) => {
         total += parseFloat(entity.money);
-    })
+    });
+    showTotal(total);
+    console.log(total);
     let totalPerIndividual = total / totalNumPpl;
     console.log(totalPerIndividual);
+}
+
+function showTotal(total) {
+    totalDisplay.innerHTML = `$${total}`;
 }
 
 // function totalPerIndividual(total, totalNumPpl) {
