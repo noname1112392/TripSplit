@@ -91,16 +91,19 @@ function outputLayout(name, money) {
     //Money container
     const moneyContainer = document.createElement('div');
     moneyContainer.className = 'flex space-x-2';
-    //two p tags inside the money container
-    //this p tag of pay or owe will change later
-    //will create an if else statement to determine
-    const pPayOwe = document.createElement('p');
-    pPayOwe.innerHTML = 'Paid:'
-    const moneyDisplay = document.createElement('p');
-    moneyDisplay.innerHTML = `$${money}`;
+    //This container will contain 2 divs
+    //first one will contain owe money and the second one will contain paid
+    const pOwe = document.createElement('p');
+    pOwe.innerHTML = 'Owed:'
+    const oweDisplay = document.createElement('p');
+    oweDisplay.innerHTML = `$${}`;
+    const pPay = document.createElement('p');
+    pPay.innerHTML = 'Paid:'
+    const payDisplay = document.createElement('p');
+    payDisplay.innerHTML = `$${money}`;
     //money container append 2 p tags
-    moneyContainer.appendChild(pPayOwe);
-    moneyContainer.appendChild(moneyDisplay);
+    moneyContainer.appendChild(pPay);
+    moneyContainer.appendChild(payDisplay);
 
     //outputContainer will append box to make it show up on the website
     box.appendChild(nameContainer);
