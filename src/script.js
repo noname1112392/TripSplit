@@ -50,14 +50,14 @@ addBtn.addEventListener('click', (e) => {
 function createEntity(name, money) {
     const newEntity = new Entity(name, money);
     entityStorage.push(newEntity);
-    displayOutput();
+    displayOutput(entityStorage);
     getTotal(entityStorage);
 }
 
 //Function to display the output layout
-function displayOutput() {
+function displayOutput(arr) {
     outputContainer.innerHTML = '';
-    entityStorage.forEach((entity) => {
+    arr.forEach((entity) => {
         outputLayout(entity.name, entity.money);
     });
 }
@@ -91,16 +91,23 @@ function outputLayout(name, money) {
     //Money container
     const moneyContainer = document.createElement('div');
     moneyContainer.className = 'flex space-x-2';
-    //This container will contain 2 divs
-    //first one will contain owe money and the second one will contain paid
-    const pOwe = document.createElement('p');
-    pOwe.innerHTML = 'Owed:'
-    const oweDisplay = document.createElement('p');
-    oweDisplay.innerHTML = `$${}`;
+    // Not yet
+    // const pOwe = document.createElement('p');
+    // pOwe.innerHTML = 'Owed:'
+    // const oweDisplay = document.createElement('p');
+    // oweDisplay.innerHTML = `$${}`;
     const pPay = document.createElement('p');
-    pPay.innerHTML = 'Paid:'
+    // pPay.innerHTML = 'Paid:'
     const payDisplay = document.createElement('p');
-    payDisplay.innerHTML = `$${money}`;
+    //if else statement
+    if (money > 0) {
+        pPay.innerHTML = 'Paid:'
+        payDisplay.innerHTML = `$${money}`;
+    } else {
+        pPay.innerHTML = 'Owe:'
+        payDisplay.innerHTML = `$${money}`;
+    }
+    
     //money container append 2 p tags
     moneyContainer.appendChild(pPay);
     moneyContainer.appendChild(payDisplay);
@@ -146,6 +153,7 @@ function newEntity(moneyPerIndividual) {
 submitBtn.addEventListener('click', () => {
     newEntity(totalPerIndividual);
     calculate();
+    displayOutput(updateEntityStorage);
     console.log(entityStorage);
 })
 
