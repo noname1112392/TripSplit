@@ -149,14 +149,12 @@ function newEntity(moneyPerIndividual) {
     newEntityStorage.forEach((entity) => {
         entity.money = moneyPerIndividual;
     })
-    console.log(newEntityStorage);
 }
 
 submitBtn.addEventListener('click', () => {
     newEntity(totalPerIndividual);
     calculate();
     displayOutput(updateEntityStorage);
-    console.log(entityStorage);
 })
 
 function calculate() {
@@ -166,5 +164,4 @@ function calculate() {
         const newEntity = new Entity(entity.name, newTotal);
         updateEntityStorage.push(newEntity);
     })
-    console.log(updateEntityStorage);
 }
