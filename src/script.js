@@ -40,6 +40,8 @@ addBtn.addEventListener('click', (e) => {
     if (!isNaN(moneyValue) && moneyValue.trim() !== '') {
         createEntity(nameValue, moneyValue);
         dialog.close();
+        nameInput.value = '';
+        moneyInput.value = '';
     } else {
         //alert for now but will create a div under the money input
         alert('please enter a valid amount for money.')
