@@ -14,7 +14,7 @@ let totalPerIndividual = 0;
 const entityStorage = [];
 
 //An array to store the money who need to pay or need to receive
-const newEntityStorage = [];
+// const newEntityStorage = [];
 
 //An array to store the update version when the entitystorage.money - the newEntityStorage.money
 //this array will then display the money onto the website
@@ -152,20 +152,20 @@ function getTotal(arr) {
     //Call the showTotal function 
     showTotal(total);
     //Call the createNewEntity function
-    createNewEntity(name);
+    //createNewEntity(name);
     //This variable right here is to get the total for each person/couple/group. 
     //An avg for each entity
     totalPerIndividual = total / totalNumPpl;
 }
 
-//New entity function that will create a new entity and put it inside another array
-//We want to create a new array to store the name and the avg money per person
-function createNewEntity(name) {
-    // New entity being created here
-    const newEntity = new Entity(name);
-    //Store into another array
-    newEntityStorage.push(newEntity);
-}
+// //New entity function that will create a new entity and put it inside another array
+// //We want to create a new array to store the name and the avg money per person
+// function createNewEntity(name) {
+//     // New entity being created here
+//     const newEntity = new Entity(name);
+//     //Store into another array
+//     newEntityStorage.push(newEntity);
+// }
 
 //This function will be called from getTotal to display the total money on the web
 function showTotal(total) {
@@ -174,17 +174,17 @@ function showTotal(total) {
     totalDisplay.innerHTML = `$${roundTotal}`;
 }
 
-//This function is to push the avg money to each person in the new array
-function newEntity(moneyPerIndividual) {
-    newEntityStorage.forEach((entity) => {
-        entity.money = moneyPerIndividual;
-    })
-}
+// //This function is to push the avg money to each person in the new array
+// function newEntity(moneyPerIndividual) {
+//     newEntityStorage.forEach((entity) => {
+//         entity.money = moneyPerIndividual;
+//     })
+// }
 
 //This is a submit button
 //Whenever this button is clicked, it will update the current/new/update arrays.
 submitBtn.addEventListener('click', () => {
-    newEntity(totalPerIndividual);
+    //newEntity(totalPerIndividual);
     calculate();
     displayOutput(updateEntityStorage);
 })
