@@ -33,13 +33,17 @@ addBtnDialog.addEventListener('click', () => {
 
 //Add btn function
 addBtn.addEventListener('click', (e) => {
+    //Prevent the page to refresh since there is no server to submit to either get or post
     e.preventDefault();
+    //Get the name and the money value from the input fields
     let nameValue = nameInput.value;
     let moneyValue = moneyInput.value;
     //check if money input is a valid number
     if (!isNaN(moneyValue) && moneyValue.trim() !== '') {
         createEntity(nameValue, moneyValue);
         dialog.close();
+        //Clear the input in the input field
+        //So the next user dont have to manually clear the input field
         nameInput.value = '';
         moneyInput.value = '';
     } else {
@@ -49,16 +53,27 @@ addBtn.addEventListener('click', (e) => {
 })
 
 //Function to create individual entity
+//This function will be called in the addBtn function each time they click the add button
 function createEntity(name, money) {
+    //Will get the input name and money from the dialog 
+    //Then create a new entity/person along with the money
     const newEntity = new Entity(name, money);
+    //Push this new entity/person to the entity array
     entityStorage.push(newEntity);
+    //call out the displayOutput function.
     displayOutput(entityStorage);
+    //Call out the getTotal function
     getTotal(entityStorage);
 }
 
 //Function to display the output layout
+//This function will display the arr out on the screen
+//Will take array
 function displayOutput(arr) {
+    //Refresh the page everytime this function is called
     outputContainer.innerHTML = '';
+    //A for loops. get name and money from the array
+    //Place them in the outputLayout function to display the entity name and money
     arr.forEach((entity) => {
         outputLayout(entity.name, entity.money);
     });
@@ -66,6 +81,7 @@ function displayOutput(arr) {
 
 //Function to close dialog
 closeBtn.addEventListener('click', (e) => {
+    //Prevent the page to refresh since there is no server to submit to either get or post
     e.preventDefault();
     dialog.close();
 })
@@ -99,7 +115,7 @@ function outputLayout(name, money) {
     // pPay.innerHTML = 'Paid:'
     const payDisplay = document.createElement('p');
     //if else statement
-    //This will need to update the color of the word example if owe will be red and if paid will be green
+    //Update the paid/owe word on the web depends on the user's total money
     if (money > 0) {
         pPay.innerHTML = 'Paid:'
         payDisplay.innerHTML = `$${roundMoney}`;
@@ -122,42 +138,60 @@ function outputLayout(name, money) {
 }
 
 //Calculate function
+//Get called from createEntity function
 function getTotal(arr) {
     let total = 0;
     let totalNumPpl = entityStorage.length;
     let name = '';
+    //A for loop for the array. 
+    //Get a total for all the entity money
     arr.forEach((entity) => {
         total += parseFloat(entity.money);
         name = entity.name;
     });
-
+    //Call the showTotal function 
     showTotal(total);
+    //Call the createNewEntity function
     createNewEntity(name);
+    //This variable right here is to get the total for each person/couple/group. 
+    //An avg for each entity
     totalPerIndividual = total / totalNumPpl;
 }
 
+//New entity function that will create a new entity and put it inside another array
+//We want to create a new array to store the name and the avg money per person
 function createNewEntity(name) {
+    // New entity being created here
     const newEntity = new Entity(name);
+    //Store into another array
     newEntityStorage.push(newEntity);
 }
 
+//This function will be called from getTotal to display the total money on the web
 function showTotal(total) {
+    //To get 2 decimals place
     let roundTotal = Math.round(total * 100) / 100;
     totalDisplay.innerHTML = `$${roundTotal}`;
 }
 
+//This function is to push the avg money to each person in the new array
 function newEntity(moneyPerIndividual) {
     newEntityStorage.forEach((entity) => {
         entity.money = moneyPerIndividual;
     })
 }
 
+//This is a submit button
+//Whenever this button is clicked, it will update the current/new/update arrays.
 submitBtn.addEventListener('click', () => {
     newEntity(totalPerIndividual);
     calculate();
     displayOutput(updateEntityStorage);
 })
 
+//this is a calculate function
+//it will calculate the original money and substract the avg money per person/group/couple
+//it then push into a new array and get displayOutPUt function to do the job.
 function calculate() {
     updateEntityStorage.length = 0;
     entityStorage.forEach((entity) => {
