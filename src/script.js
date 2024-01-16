@@ -72,6 +72,9 @@ closeBtn.addEventListener('click', (e) => {
 
 //Output the layout structure
 function outputLayout(name, money) {
+    //Round money to 2 decimals 
+    let roundMoney = Math.round(money * 100) / 100;
+
     //Box container the output
     const box = document.createElement('div');
     box.className = 'flex justify-between items-center px-5 rounded-lg shadow-md p-2';
@@ -84,7 +87,6 @@ function outputLayout(name, money) {
     //name container append p tag
     nameContainer.appendChild(pName);
 
-
     //create a divider between name and the money they spend/owe
     const divider = document.createElement('div');
     divider.innerHTML = '|';
@@ -93,21 +95,19 @@ function outputLayout(name, money) {
     //Money container
     const moneyContainer = document.createElement('div');
     moneyContainer.className = 'flex space-x-2';
-    // Not yet
-    // const pOwe = document.createElement('p');
-    // pOwe.innerHTML = 'Owed:'
-    // const oweDisplay = document.createElement('p');
-    // oweDisplay.innerHTML = `$${}`;
     const pPay = document.createElement('p');
     // pPay.innerHTML = 'Paid:'
     const payDisplay = document.createElement('p');
     //if else statement
+    //This will need to update the color of the word example if owe will be red and if paid will be green
     if (money > 0) {
         pPay.innerHTML = 'Paid:'
-        payDisplay.innerHTML = `$${money}`;
+        payDisplay.innerHTML = `$${roundMoney}`;
     } else {
-        pPay.innerHTML = 'Owe:'
-        payDisplay.innerHTML = `$${money}`;
+        pPay.className = 'border border-red-500 text-red-400';
+        pPay.innerHTML = 'Owed:'
+        payDisplay.className = 'font-bold text-red-500';
+        payDisplay.innerHTML = `$${roundMoney}`;
     }
     
     //money container append 2 p tags
@@ -142,7 +142,8 @@ function createNewEntity(name) {
 }
 
 function showTotal(total) {
-    totalDisplay.innerHTML = `$${total}`;
+    let roundTotal = Math.round(total * 100) / 100;
+    totalDisplay.innerHTML = `$${roundTotal}`;
 }
 
 function newEntity(moneyPerIndividual) {
